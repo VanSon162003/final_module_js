@@ -9,6 +9,9 @@ const render = async () => {
     document.querySelector("#app").innerHTML = await app();
 };
 
-await render();
+async function startApp() {
+    await render();
+    await initRouter();
+}
 
-await initRouter();
+startApp();
