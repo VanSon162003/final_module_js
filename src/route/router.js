@@ -3,6 +3,7 @@ import Home from "../pages/Home";
 import Explore from "../pages/Explore";
 import Library from "../pages/Library";
 import ChannelDetail from "../pages/ChannelDetail";
+import { handleClickPlayAudio } from "../components/WrapContent";
 
 const router = new Navigo("/", {
     hash: false,
@@ -12,8 +13,9 @@ const router = new Navigo("/", {
 const initRouter = async () => {
     const page = document.querySelector("#js-body");
     router
-        .on("/", () => {
-            page.innerHTML = Home();
+        .on("/", async () => {
+            page.innerHTML = await Home();
+            await handleClickPlayAudio();
         })
         .on("/explore", () => {
             page.innerHTML = Explore();
@@ -22,7 +24,7 @@ const initRouter = async () => {
             page.innerHTML = Library();
         })
         .on("/channel/:slug", async () => {
-            page.innerHTML = await ChannelDetail();
+            page.innerHTML = ChannelDetail();
         })
         .resolve();
 };

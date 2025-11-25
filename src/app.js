@@ -1,4 +1,3 @@
-import Home from "./pages/Home";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -9,7 +8,7 @@ import Footer from "./components/Footer";
 async function app() {
     return `
             ${await Header()}
-            <main id="js-body"></main>
+            <main id="js-body" class="container mx-auto"></main>
             ${Footer()}
 `;
 }

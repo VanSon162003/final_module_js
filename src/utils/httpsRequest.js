@@ -30,12 +30,12 @@ httpsRequest.interceptors.response.use(
                 isRefresh = true; // chặn không cho refresh nữa
 
                 try {
-                    const baseUrl =
-                        "https://api.escuelajs.co/api/v1/auth/refresh-token"; // thay thế url bằng url của anh An cấp
-
-                    const token = await axios.post(baseUrl, {
-                        refreshToken: refreshToken,
-                    });
+                    const token = await axios.post(
+                        `${baseURL}/auth/refresh-token`,
+                        {
+                            refreshToken: refreshToken,
+                        }
+                    );
 
                     // access_token và refresh_token sửa lại tương ứng api anh An cấp
                     localStorage.setItem("token", token.data.access_token);

@@ -1,37 +1,30 @@
 import PlaylistTags from "../components/PlaylistTags";
-import authSevice from "../service/authSevice";
+import WrapContent from "../components/WrapContent";
+import albumsService from "../service/albumsService";
+import homeService from "../service/homeService";
 
-function Home() {
-    const PlaylistTagsName = [
-        {
-            name: "nạp năng lượng",
-        },
-        {
-            name: "đi chơi",
-        },
-        {
-            name: "uống nước",
-        },
-        {
-            name: "đi xe đạp",
-        },
-        {
-            name: "đến trường",
-        },
-        {
-            name: "ok chư",
-        },
-    ];
-
-    // const user = authSevice.currentUser();
+async function Home() {
+    const moods = await homeService.getMoods();
+    const albums = await homeService.getAlbum();
+    const albumDetail = await albumsService.getOne();
 
     return `
-    <div class="container mx-auto ">
-      <div class="ml-[240px]">
-        ${PlaylistTagsName.map((element) => {
-            return PlaylistTags(element.name);
-        }).join("")}
+    <div id="wrapper-content" class="mt-[50px] ml-[220px]">
+      <div class="flex  flex-nowrap gap-[10px] ">
+        ${moods
+            .map((element) => {
+                return PlaylistTags(element.name);
+            })
+            .join("")}
         
+      </div>
+
+      <div class="mt-[50px]">
+            ${await WrapContent(albums)}
+      </div>
+
+      <div class="mt-[50px]">
+            ${await WrapContent(albumDetail)}
       </div>
     </div>
     `;

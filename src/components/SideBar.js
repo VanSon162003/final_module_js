@@ -17,11 +17,10 @@ function SideBar() {
                 </a>
             </div>
 
-            <div>
-                <a class="dark:text-white" href="/">trang chủ</a>
-                <a class="dark:text-white" href="/explore">khám phá</a>
-                <a class="dark:text-white" href="/library">thư viện</a>
-                <a class="dark:text-white" href="/channel/${randomSlug}">đến trang channel</a>
+            <div class="flex flex-col gap-[10px]">
+                <a class="dark:text-white mx-[10px] text-[18px] bg-[#1d1d1d] px-[10px] py-[5px] rounded-[8px]" href="/">Trang chủ</a>
+                <a class="dark:text-white mx-[10px] text-[18px]  px-[10px] py-[5px] rounded-[8px]" href="/explore">Khám phá</a>
+                <a class="dark:text-white mx-[10px] text-[18px]  px-[10px] py-[5px] rounded-[8px]" href="/library">Thư viện</a>
             </div>
         </div>
     `;
